@@ -6,4 +6,4 @@ def screenshot_on_failure(request, page: Page):
     yield
     if request.node.rep_call.failed:
         if not page.is_closed():
-            page.screenshot(path=f"screenshots/{request.node.name}.png")
+            page.screenshot(path=f"screenshots/{request.node.name}-error.png")
