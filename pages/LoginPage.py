@@ -11,8 +11,8 @@ class LoginPage:
         self.__contrasena = ""
         self.__context = context
         self.__url = str(url)
-        self.pagina = self.__context.new_page()
-        self.pagina.goto(self.__url)
+        self.__pagina = self.__context.new_page()
+        self.__pagina.goto(self.__url)
 
     def ingresar_usuario(self, usuario: str) -> None:
         """
@@ -23,7 +23,7 @@ class LoginPage:
         """
         if len(usuario) > 0:
             self.__usuario = str(usuario)
-            self.pagina.locator("input[id=username]").type(self.__usuario)
+            self.__pagina.locator("input[id=username]").type(self.__usuario)
         else:
             raise Exception("El usuario no puede estar vacío.")
 
@@ -36,7 +36,7 @@ class LoginPage:
         """
         if len(contrasena) > 0:
             self.__contrasena = str(contrasena)
-            self.pagina.locator("input[id=password]").type(self.__contrasena)
+            self.__pagina.locator("input[id=password]").type(self.__contrasena)
         else:
             raise Exception("La contraseña no puede estar vacía.")
 
