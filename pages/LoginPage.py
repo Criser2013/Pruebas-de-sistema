@@ -19,5 +19,5 @@ class LoginPage:
         page.locator("input[id=username]").type(self.__usuario)
         page.locator("input[id=password]").type(self.__contrasena)
         page.locator("input[type=submit]").click()
-
-        expect(page).to_have_title("Home - Dolibarr 15.0.3")
+        expect(page).to_have_title("Inicio - Dolibarr 15.0.3")
+        page.close()

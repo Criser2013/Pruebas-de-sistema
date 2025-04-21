@@ -10,15 +10,48 @@ URL = getenv("URL")
 @pytest.fixture(scope="function", autouse=True)
 def before_each_after_each(page: Page, browser: Browser, context: BrowserContext):
     #Colocar cosas aquí que se ejecuten antes de cada test
-    browser.new_context(locale="es-ES")
+    browser.new_context(locale="es-CO",timezone_id="America/Bogota")
+    
     login_page = LoginPage(URL, context)
     login_page.ingresar_usuario(getenv("USUARIO"))
     login_page.ingresar_contrasena(getenv("CONTRASENA"))
     login_page.iniciar_sesion()
     yield
-    browser.close()
-    #Colocar cosas aquí que se ejecuten despues de cada test
+    #colocar cosas aqui cuando termine el test
+    context.close()
 
 def test_crear_dia_usuario_valido(page: Page) -> None:
     page.goto(f"{URL}/holiday/card.php?mainmenu=hrm&leftmenu=holiday&action=create")
-    # Click the get started link.
+
+    # Seleccionando el usuario 
+    page.locator("span#select2-fuserid-container").click()
+    page.get_by_role("option", name="Juan Robles").click()
+
+    # Seleccionando el tipo de licencia
+    page.locator("#select2-type-container").click()
+    page.get_by_role("option", name="Baja por enfermedad").click()
+
+    # Seleccionando las fechas
+    page.locator("#date_debut_").fill("06/04/2025")
+    page.locator("#date_fin_").fill("06/10/2025")
+
+    # Seleccionando el revisor
+    page.locator("span[id='select2-valideur-container']").click()
+    page.get_by_role("option", name="Revisor Vacaciones").click()
+
+    # Clic en el botón de guardado
+    page.get_by_role("button", name="Crear solicitud de licencia").click()
+    
+    # Verificando el guardado
+    expect(page.get_by_text("Juan Robles")).to_be_visible()
+    expect(page.get_by_text("Baja por enfermedad")).to_be_visible()
+    expect(page.get_by_text("06/04/2025")).to_be_visible()
+    expect(page.get_by_text("06/10/2025")).to_be_visible()
+    expect(page.get_by_text("Revisor Vacaciones")).to_be_visible()
+
+    # Verificando la marca de tiempo de grabación
+    tiempo = page.locator("span[class=opacitymedium]").all()
+
+    expect(tiempo[0]).to_contain_text("Mañana")
+    expect(tiempo[1]).to_contain_text("Tarde")
+    page.screenshot(path="screenshots/test_crear_dia_libre.png")

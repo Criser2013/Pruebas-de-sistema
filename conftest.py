@@ -5,4 +5,5 @@ from playwright.sync_api import Page
 def screenshot_on_failure(request, page: Page):
     yield
     if request.node.rep_call.failed:
-        page.screenshot(path=f"screenshots/{request.node.name}.png")
+        if not page.is_closed():
+            page.screenshot(path=f"screenshots/{request.node.name}.png")
