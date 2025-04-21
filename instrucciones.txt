@@ -1,0 +1,2 @@
+El nombre del archivo debe ser "test_<nombre-test>-py".
+Se ejecuta con: "pytest" estando en el entorno de Python
