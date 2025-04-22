@@ -261,8 +261,6 @@ def test_23(page: Page):
     PAGINA.ingresar_descripcion("<h1>esto es html 🥳</h1>")
     PAGINA.guardar_datos()
     PAGINA.verificar_guardado("test_23")
-    page.pause()
-    PAGINA.__pagina.pause()
 
 def test_24(page: Page):
     PAGINA = CrearDiaLibrePage(page, URL)
