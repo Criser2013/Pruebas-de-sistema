@@ -50,5 +50,5 @@ class LoginPage:
         """
         Verifica si la autenticación fue exitosa al comprobar el título de la página.
         """
-        expect(self.__pagina).to_have_title("Inicio - Dolibarr 15.0.3")
+        expect(self.__pagina).to_have_title("Inicio - Dolibarr 21.0.1")
         self.__pagina.close()
