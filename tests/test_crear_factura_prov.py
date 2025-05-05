@@ -132,7 +132,6 @@ def test_10(page: Page):
     Comprobando que se muestre un error al no seleccionar un proveedor y usar una referencia existente - tiene un error :D - R12
     """
     PAGINA = CrearFacturaProvPage(page, URL)
-    PAGINA.ingresar_fecha_factura(hoy=True)
     PAGINA.ingresar_ref_factura("Fact-001")
     PAGINA.ingresar_fecha_factura(hoy=True)
     PAGINA.guardar_factura()

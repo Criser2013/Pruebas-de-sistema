@@ -118,7 +118,7 @@ def test_8(page: Page):
     """
     PAGINA = EstadisticasFactClientePage(page, URL)
     PAGINA.seleccionar_tercero("")
-    PAGINA.seleccionar_tipo_tercero("Administración")
+    PAGINA.seleccionar_tipo_tercero("")
     PAGINA.seleccionar_creador("")
     PAGINA.seleccionar_estado("")
     PAGINA.seleccionar_ano("2025")
