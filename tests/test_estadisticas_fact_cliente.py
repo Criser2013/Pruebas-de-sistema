@@ -80,26 +80,13 @@ def test_5(page: Page):
     """
     PAGINA = EstadisticasFactClientePage(page, URL)
     PAGINA.seleccionar_tercero("")
-    PAGINA.seleccionar_tipo_tercero("Administración")
-    #PAGINA.seleccionar_etiqueta("")
-    PAGINA.seleccionar_creador("")
-    PAGINA.seleccionar_estado("")
-    PAGINA.seleccionar_ano("2025")
-    PAGINA.verificar_filtros_aplicados("2023")
-
-def test_6(page: Page):
-    """
-    Intentando filtrar con un tipo de tercero inexistente.
-    """
-    PAGINA = EstadisticasFactClientePage(page, URL)
-    PAGINA.seleccionar_tercero("")
     #PAGINA.seleccionar_etiqueta("")
     PAGINA.seleccionar_creador("")
     PAGINA.seleccionar_estado("")
     PAGINA.seleccionar_ano("2025")
     PAGINA.verificar_tipo_tercero_inexistente("MyPYME")
 
-def test_7(page: Page):
+def test_6(page: Page):
     """
     Filtrando con 2 etiquetas.
     """
@@ -112,7 +99,7 @@ def test_7(page: Page):
     PAGINA.seleccionar_ano("2025")
     PAGINA.verificar_filtros_aplicados("2023")
 
-def test_8(page: Page):
+def test_7(page: Page):
     """
     Filtrando con una etiqueta.
     """
@@ -125,7 +112,7 @@ def test_8(page: Page):
     PAGINA.seleccionar_ano("2025")
     PAGINA.verificar_filtros_aplicados("2023")
 
-def test_9(page: Page):
+def test_8(page: Page):
     """
     Intentando filtrar con una etiqueta inexistente.
     """
@@ -137,7 +124,7 @@ def test_9(page: Page):
     PAGINA.seleccionar_ano("2025")
     PAGINA.verificar_etiqueta_inexistente("Preferido")
 
-def test_10(page: Page):
+def test_9(page: Page):
     """
     Filtrando por el campo "creador".
     """
@@ -150,7 +137,7 @@ def test_10(page: Page):
     PAGINA.seleccionar_ano("2025")
     PAGINA.verificar_filtros_aplicados("2023")
 
-def test_11(page: Page):
+def test_10(page: Page):
     """
     Intentando filtrar con un creador inexistente
     """
@@ -162,7 +149,7 @@ def test_11(page: Page):
     PAGINA.seleccionar_ano("2025")
     PAGINA.verificar_creador_inexistente("Creador Tickets")
 
-def test_12(page: Page):
+def test_11(page: Page):
     """
     Filtrando por el campo "estado".
     """
@@ -175,7 +162,7 @@ def test_12(page: Page):
     PAGINA.seleccionar_ano("2025")
     PAGINA.verificar_filtros_aplicados("2023")
 
-def test_13(page: Page):
+def test_12(page: Page):
     """
     Intentando filtrar con un estado inexistente.
     """
@@ -187,7 +174,7 @@ def test_13(page: Page):
     PAGINA.seleccionar_ano("2025")
     PAGINA.verificar_estado_inexistente("Abonada")
 
-def test_14(page: Page):
+def test_13(page: Page):
     """
     Intentando filtrar con un año vacío - falla :D
     """
@@ -199,7 +186,7 @@ def test_14(page: Page):
     PAGINA.seleccionar_estado("")
     PAGINA.verificar_ano_inexistente("")
 
-def test_15(page: Page):
+def test_14(page: Page):
     """
     Intentando filtrar con un año inexistente.
     """

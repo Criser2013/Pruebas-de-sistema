@@ -24,7 +24,6 @@ class  EstadisticasFactClientePage:
         COMPONENTE.click()
 
         if len(tercero) == 0:
-            self.__pagina.wait_for_timeout(1000)
             self.__pagina.locator("xpath=//span[@class='select2-search select2-search--dropdown']//input[@class='select2-search__field']").press("Enter")
         else:
             self.__pagina.get_by_role("option", name=str(tercero)).click()
